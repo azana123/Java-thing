@@ -1,1 +1,1 @@
-# Java-thing
+## My little java project to learn programming
