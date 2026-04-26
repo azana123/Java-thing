@@ -14,6 +14,7 @@ public class CalculatorMain {
 
         double result = evaluatePostfix(postfix, input.length());
         System.out.println("Hasil: " + result);
+        sc.close();
     }
 
     public static int precedence(char ch) {
