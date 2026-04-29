@@ -34,7 +34,7 @@ public class Nada {
 
     public void tampilTanggaNadaMayor(String nadaDasar) {
         String[] tanggaNada = tanggaNadaMayor(nadaDasar);
-
+        System.out.println("===================================");
         if (tanggaNada == null) {
             System.out.println("Nada tidak ditemukan");
             return;
