@@ -1,3 +1,4 @@
-## My little java project to learn programming
+## Project gabut selama kuliah
 
-### 1. Calculator program using stack algorithm and detect the input by the whole mathematical expression.
+### 1. Program Kalkulator yang menghitung langsung satu ekspresi matematika (bukan lewat variabel terpisah) menggunakan algoritma stack
+### 2. Program Mencari tangga nada berdasarkan input nada dasar
