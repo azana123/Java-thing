@@ -1,89 +1,89 @@
 package Calculator_ahh_project;
 import java.util.Scanner;
+import java.util.Random;
 
 public class CalculatorMain {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Random rand = new Random();
+        boolean start = true;
 
-        System.out.println("=== Program Kalkulator ===");
-        System.out.print("Input ekspresi matematika (+-*/): ");
-        String input = sc.nextLine();
+        System.out.println("=== GAME BATU KERTAS GUNTING ===");
 
-        String postfix = infixToPostFix(input);
-        System.out.println("Postfix: " + postfix);
-
-        double result = evaluatePostfix(postfix, input.length());
-        System.out.println("Hasil: " + result);
-        sc.close();
-    }
-
-    public static int precedence(char ch) {
-        if (ch == '+' || ch == '-') return 1;
-        if (ch == '*' || ch == '/') return 2;
-        return -1;
-    }
-
-    public static String infixToPostFix(String infix){
-        String postfix = "";
-        charStack stack = new charStack(infix.length());
-
-        for (int i = 0; i < infix.length(); i++) {
-            char c = infix.charAt(i);
-
-            if (Character.isDigit(c)) {
-                postfix += c;
-            } else if (c == '(') {
-                stack.push(c);
-            } else if (c == ')') {
-                while (!stack.isEmpty() && stack.peek() != '(') {
-                    postfix += stack.pop();
-                }
-                stack.pop();
-            } else if (c == '+' || c == '-' || c == '*' || c == '/') {
-                while (!stack.isEmpty() && precedence(c) <= precedence(stack.peek())) {
-                    postfix += stack.pop();
-                }
-                stack.push(c);
+        do {
+            int player;
+            int bot = rand.nextInt(3) + 1;
+            System.out.println("1 = Batu");
+            System.out.println("2 = Kertas");
+            System.out.println("3 = Gunting");
+            System.out.println("4 = Keluar game");
+            System.out.println("=====================================");
+            System.out.print("Masukan pilihan anda: ");
+            player = sc.nextInt();
+            System.out.println("=====================================");
+            String pilihanBot;
+            if (bot == 1) {
+                pilihanBot = "BATU";
+            } else if (bot == 2) {
+                pilihanBot = "KERTAS";
+            } else {
+                pilihanBot = "Gunting";
             }
-        }
 
-        while (!stack.isEmpty()) {
-            postfix += stack.pop();
-        }
-        return postfix;
-    }
-
-    public static double evaluatePostfix(String postfix, int length) {
-        doubleStack stack = new doubleStack(length);
-
-        for (int i = 0; i < postfix.length(); i++) {
-            char c = postfix.charAt(i);
-
-            if (Character.isDigit(c)) {
-                stack.push(c - '0');
-            } else if (c == '+' || c == '-' || c == '*' || c == '/') {
-                double value2 = stack.pop();
-                double value1 = stack.pop();
-                switch (c) {
-                    case '+':
-                        stack.push(value1 + value2);
-                        break;
-                    case '-':
-                        stack.push(value1 - value2);
-                        break;
-                    case '*':
-                        stack.push(value1 * value2);
-                        break;
-                    case '/':
-                        if (value2 == 0) {
-                            System.out.println("Error: Division by zero!");
-                            return 0;
-                        }
-                        stack.push(value1 / value2);
-                        break;
-                }
+            String pilihanPlayer;
+            if (player == 1) {
+                pilihanPlayer = "BATU";
+            } else if (player == 2) {
+                pilihanPlayer = "KERTAS";
+            } else {
+                pilihanPlayer = "Gunting";
             }
-        }
-        return stack.pop(); 
+
+            switch (player) {
+                case 1:
+                    System.out.println("Pilihan kamu: " + pilihanPlayer);
+                    System.out.println("Pilihan bot: " + pilihanBot);
+                    if (bot == 1) {
+                        System.out.println("waduh imbang bro");
+                    } else if (bot == 2) {
+                        System.out.println("Kamu kalah wkwkwk");
+                    } else {
+                        System.out.println("kamu menang yey");
+                    }
+                    System.out.println("=====================================");
+                    break;
+                case 2:
+                    System.out.println("Pilihan kamu: " + pilihanPlayer);
+                    System.out.println("Pilihan bot: " + pilihanBot);
+                    if (bot == 1) {
+                        System.out.println("kamu menang yey");
+                    } else if (bot == 2) {
+                        System.out.println("waduh imbang bro");
+                    } else {
+                        System.out.println("kamu kalah wkwkwk");
+                    }
+                    System.out.println("=====================================");
+                    break;
+                case 3:
+                    System.out.println("Pilihan kamu: " + pilihanPlayer);
+                    System.out.println("Pilihan bot: " + pilihanBot);
+                    if (bot == 1) {
+                        System.out.println("kamu  kalah wkwkwk");
+                    } else if (bot == 2) {
+                        System.out.println("kamu menang yey");
+                    } else {
+                        System.out.println("waduh imbang bro");
+                    }
+                    System.out.println("=====================================");
+                    break;
+                case 4:
+                    System.out.println("keluar . . .");
+                    start = false;
+                    break;
+                default:
+                    System.out.println("Pilihan tidak valid");
+                    break;
+            }
+        } while(start);
     }
 }
