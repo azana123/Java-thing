@@ -39,7 +39,7 @@ Aplikasi simulasi antrean bank cerdas yang memisahkan jalur nasabah menjadi dua 
 ## 💻 Cara Menjalankan Project
 1. Clone repositori ini ke komputer lokal kamu:
    ```bash
-   git clone https://github.com
+   https://github.com/azana123/Java-thing.git
    ```
 2. Buka folder proyek menggunakan IDE pilihanmu.
 3. Jalankan file `Main` atau file yang berisi method `public static void main(String[] args)` pada masing-masing folder proyek.
